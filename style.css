@@ -5,6 +5,16 @@
   -webkit-user-select: none;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;              /* STOP PAGE SCROLL */
+  overscroll-behavior: none;     /* STOP BOUNCE SCROLL */
+  touch-action: none;            /* STOP SWIPE SCROLL */
+}
+
 /* only disable touch gestures where you drag */
 .lever-wrapper, .lever {
   touch-action: none;
@@ -42,6 +52,7 @@
         padding-top: 40px;
         text-align: center;
         color: #fff;
+        overflow: hidden;
       }
 
 
@@ -309,13 +320,6 @@
   transform: rotate(-20deg);
 }
 
-a:has(.inner-image) {
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  transform: translateX(-50%);
-  z-index: 6;
-}
 .status {
   animation: pulse 1.8s infinite;
 }
