@@ -13,8 +13,10 @@ html, body {
   overflow: hidden;              /* STOP PAGE SCROLL */
   overscroll-behavior: none;     /* STOP BOUNCE SCROLL */
   touch-action: none;            /* STOP SWIPE SCROLL */
-  -webkit-text-size-adjust: 100%;
 }
+body { min-height: 100vh; }
+.music-box { margin-top: 50px; }
+
 
 /* only disable touch gestures where you drag */
 .lever-wrapper, .lever {
@@ -27,20 +29,24 @@ html, body {
   pointer-events: none;
 }
 
+/* allow tapping/clicking these */
+#windButton,
+.letter-link,
+.inner-image {
+  touch-action: manipulation;
+}
 
-      body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-image: url(images/img3.jpg);
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-
-
-      }
+     body {
+  margin: 0;
+  height: 100vh;          /* not min-height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(images/img3.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
       .music-box {
         width: 280px;
@@ -53,6 +59,7 @@ html, body {
         text-align: center;
         color: #fff;
         overflow: hidden;
+        touch-action: none;
       }
 
 
@@ -212,8 +219,8 @@ html, body {
   top: -240px;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
-  height: 500px;
+  width: 160px;
+  height: 140px;
   overflow: hidden;
   border-radius: 10px;
   z-index: 1;
@@ -328,3 +335,12 @@ html, body {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
+
+.music-box { touch-action: none; }
+
+#windButton,
+.letter-link,
+.inner-image { touch-action: manipulation; }
+
+body { height: 100vh; }          /* replace min-height */
+.music-box { margin-top: 0; }    /* remove margin-top */
