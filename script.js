@@ -2,15 +2,23 @@ const lever = document.getElementById('lever');
 const wrapper = document.getElementById('leverWrapper');
 const music = document.getElementById('music');
 const lid = document.getElementById('lid');
-const status = document.getElementById('status');
-const image = document.getElementById('innerImage');
+
+const slides = document.getElementById("slides");
 
 let dragging = false;
 let lastAngle = null;
 let rotation = 0;
-
-// 0 = fully hidden, 1 = fully revealed
 let liftProgress = 0;
+
+const slideCount = slides.children.length;
+const slideWidth = 120;
+
+let currentIndex = 1;                 // start at actual first image (because of duplicate)
+let carouselOffset = -slideWidth;     // show first image
+
+// initialize
+slides.style.transform = `translateX(${carouselOffset}px)`;
+
 
 function getAngle(x, y) {
   const rect = wrapper.getBoundingClientRect();
@@ -38,8 +46,6 @@ function move(e) {
 
   const sensitivity = 0.004;
   liftProgress += delta * sensitivity;
-
-  // Clamp between 0 and 1  
   liftProgress = Math.max(0, Math.min(1, liftProgress));
 
   rotation += delta * 0.35;
@@ -50,8 +56,10 @@ function move(e) {
 
   if (music.paused && liftProgress > 0) {
     music.play().catch(() => {});
-    status.textContent = 'Playing while winding…';
   }
+
+  // <-- IMPORTANT: use this function for carousel movement
+  moveCarousel(delta);
 }
 
 function end() {
@@ -59,15 +67,12 @@ function end() {
   lastAngle = null;
   lever.style.cursor = 'grab';
   music.pause();
-  status.textContent = 'Stopped';
 }
 
 function updateImage() {
+  const image = document.getElementById('innerImage');
   const imageHeight = image.offsetHeight;
-
-  // Max rise = image height
   const rise = imageHeight * liftProgress;
-
   image.style.transform = `translateX(-50%) translateY(${-rise}px)`;
 
   if (liftProgress > 0) {
@@ -93,3 +98,69 @@ lever.addEventListener('pointerdown', e => {
 lever.addEventListener('pointermove', move);
 lever.addEventListener('pointerup', end);
 lever.addEventListener('pointercancel', end);
+
+const windButton = document.getElementById('windButton');
+let winding = false;
+let windInterval = null;
+
+function startWinding(e) {
+  if (winding) return;
+  winding = true;
+
+  windButton.setPointerCapture(e.pointerId);
+  music.play().catch(() => {});
+
+  windInterval = setInterval(() => {
+    liftProgress += 0.01;
+    liftProgress = Math.min(1, liftProgress);
+    updateImage();
+    updateLid();
+
+    rotation += 5;
+    lever.style.transform = `rotate(${rotation}deg)`;
+
+    // also move carousel while winding
+    moveCarousel(5);
+  }, 50);
+}
+
+function stopWinding() {
+  winding = false;
+  clearInterval(windInterval);
+  windInterval = null;
+  music.pause();
+}
+
+windButton.addEventListener('pointerdown', startWinding);
+windButton.addEventListener('pointerup', stopWinding);
+windButton.addEventListener('pointerleave', stopWinding);
+windButton.addEventListener('pointercancel', stopWinding);
+
+
+// ===============================
+// Carousel Move Function (Infinite Loop)
+// ===============================
+function moveCarousel(delta) {
+  carouselOffset -= delta * 0.3;
+  slides.style.transform = `translateX(${carouselOffset}px)`;
+
+  currentIndex = Math.round(Math.abs(carouselOffset) / slideWidth);
+
+  if (currentIndex === 0) {
+    currentIndex = slideCount - 2;
+    carouselOffset = -slideWidth * currentIndex;
+    slides.style.transition = "none";
+    slides.style.transform = `translateX(${carouselOffset}px)`;
+    requestAnimationFrame(() => {
+      slides.style.transition = "transform 0.2s ease";
+    });
+  } else if (currentIndex === slideCount - 1) {
+    currentIndex = 1;
+    carouselOffset = -slideWidth * currentIndex;
+    slides.style.transition = "none";
+    slides.style.transform = `translateX(${carouselOffset}px)`;
+    requestAnimationFrame(() => {
+      slides.style.transition = "transform 0.2s ease";
+    });
+  }
+}

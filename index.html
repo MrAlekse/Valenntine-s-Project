@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Valentine’s Day</title>
-  <link rel="icon" type="image/png" href="icon.png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/icon.png" type="image/png" />
 </head>
 
 <body>
@@ -15,13 +15,24 @@
     <div class="ribbon-vertical"></div>
     <div class="ribbon-horizontal"></div>
 
+    <!-- Carousel Container -->
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <img src="images/love-letter.png" class="slide" alt="Love Letter">
+        <img src="images/icon.png" class="slide" alt="Valentine 2">
+        <img src="images/img3.jpg" class="slide" alt="Valentine 3">
+        <img src="images/icon.png" class="slide" alt="Love Letter">
+        <img src="images/icon.png" class="slide" alt="Valentine 2">
+        <img src="images/img3.jpg" class="slide" alt="Valentine 3">
+      </div>
+    </div>
+
     <img
       id="innerImage"
       class="inner-image"
-      src="img1.jfif"
-      alt="Surprise"
+      src="images/love-letter.png"
+      alt="Myloveforyou"
     />
-
 
     <div class="lever-base"></div>
     <div class="lever-wrapper" id="leverWrapper">
@@ -33,9 +44,12 @@
     <audio id="music" loop preload="auto">
       <source src="music.mp3" type="audio/mpeg">
     </audio>
+
+    <button id="windButton">
+      <h1 class="gradient-text">Wind-Up Music Box</h1>
+    </button>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
