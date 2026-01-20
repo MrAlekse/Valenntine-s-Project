@@ -13,6 +13,7 @@ html, body {
   overflow: hidden;              /* STOP PAGE SCROLL */
   overscroll-behavior: none;     /* STOP BOUNCE SCROLL */
   touch-action: none;            /* STOP SWIPE SCROLL */
+  -webkit-text-size-adjust: 100%;
 }
 
 /* only disable touch gestures where you drag */
@@ -29,7 +30,7 @@ html, body {
 
       body {
         margin: 0;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,7 +43,6 @@ html, body {
       }
 
       .music-box {
-        margin-top: 50px;
         width: 280px;
         height: 220px;
         background: linear-gradient(#f0677c, #f5afba);
