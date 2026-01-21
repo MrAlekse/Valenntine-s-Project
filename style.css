@@ -330,7 +330,7 @@ a:has(.inner-image) {
   text-align: center;
   width: 280px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-  animation: popIn 0.x3s ease;
+  animation: popIn 0.x3 ease;
 }
 
 .alert-box h2 {
@@ -367,5 +367,21 @@ a:has(.inner-image) {
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+.alert-box,
+.alert-box h2,
+.alert-box p {
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .alert-box {
+    width: 90%;
+    padding: 22px;
+  }
+
+  .alert-box p {
+    line-height: 1.5;
   }
 }
