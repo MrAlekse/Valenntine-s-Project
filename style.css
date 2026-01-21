@@ -377,14 +377,3 @@ a:has(.inner-image) {
     opacity: 1;
   }
 }
-@media (max-width: 480px) {
-  .alert-box {
-    padding: 26px 22px;
-    width: 90%;
-  }
-
-  .alert-box h2,
-  .alert-box p {
-    text-align: center;
-  }
-}
