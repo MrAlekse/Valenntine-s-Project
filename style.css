@@ -3,8 +3,12 @@
         font-family: Arial, Helvetica, sans-serif;
         user-select: none;
         -webkit-user-select: none;
+      }
+      .lever,
+      .lever-wrapper {
         touch-action: none;
       }
+
 
       body {
         margin: 0;
@@ -341,7 +345,6 @@ a:has(.inner-image) {
 .alert-box h2 {
   margin: 0 0 10px;
   font-size: 20px;
-  margin: 0 0 12px;
   line-height: 1.25;
 }
 
