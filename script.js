@@ -196,3 +196,34 @@ function showAlert() {
 function closeAlert() {
   document.getElementById("customAlert").classList.remove("show");
 }
+
+  const PASSWORD = "8813200023188";
+
+// Auto-unlock if already authenticated
+if (sessionStorage.getItem("siteUnlocked") === "true") {
+  unlock();
+}
+
+function unlockSite() {
+  const input = document.getElementById("wordInput").value;
+
+  // compare as STRING to avoid number issues
+  if (input === PASSWORD) {
+    sessionStorage.setItem("siteUnlocked", "true");
+    unlock();
+  } else {
+    document.getElementById("errorMsg").textContent = "Wrong answer 💔";
+  }
+}
+
+function unlock() {
+  document.getElementById("passwordGate").style.display = "none";
+  document.getElementById("siteContent").style.display = "block";
+}
+
+//============================secondpage===============================
+const envelope = document.getElementById("envelope");
+
+envelope.addEventListener("click", () => {
+  envelope.classList.toggle("open");
+});

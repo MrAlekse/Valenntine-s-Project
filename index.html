@@ -9,6 +9,28 @@
   </head>
 
   <body>
+   
+      <div id="passwordGate">
+        <div class="gate-box">
+          <h2>💖 ANSWER THE RIDDLE 💖</h2>
+
+            <p><b>From eighty-nine, a journey starts, <br>
+                Where numbers dance in gentle sway, <br>
+                Till forward, backward, both align... <br>
+                A mirrored heart, a perfect sign. <br>
+            </b></p>
+
+            <div>
+              <input type="number" id="wordInput" placeholder="Answer"/>
+            </div>
+
+          <button onclick="unlockSite()">Enter</button>
+          <p id="errorMsg"></p>
+        </div>
+      </div>
+    
+    <div id="siteContent" style="display:none;"></div>
+
     <div class="music-box" id="box">
 
       <div class="ribbon-vertical"></div>
@@ -83,6 +105,7 @@
         <p>Click The Letter (˶˃ ᵕ ˂˶)</p>
         <button onclick="closeAlert()">OK</button>
      </div>
+    </div>
     </div>
 
     <script src="script.js"></script>

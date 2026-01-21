@@ -1,25 +1,92 @@
-body{
-    background-color: rgb(255, 65, 65);
-    background-size: cover;
-    align-content: center;
-    background-repeat: no-repeat;
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
-.letterpage {
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    align-items: center;
-    background: linear-gradient(#ff6060, #ff0000);
-    width: 500px;
-    height: 500px;
-    border-radius: 50px;
-    margin-left: 33%;
-    border: 10px solid white;
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-p {
-    text-align: justify;
-    color:white;
+
+.container {
+  text-align: center;
 }
-.lettertext{
-    text-align: justify;
+
+.title {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.envelope {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  background: #ff6f91;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s;
+}
+
+.envelope:hover {
+  transform: scale(1.05);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff4d6d;
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  z-index: 3;
+  transition: transform 0.6s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  transform-origin: top;
+}
+
+.letter {
+  position: absolute;
+  bottom: -100%;
+  left: 10px;
+  width: 240px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: bottom 0.8s;
+  z-index: 2;
+}
+
+.envelope.open .letter {
+  bottom: 10px;
+}
+
+.letter h2 {
+  margin-top: 0;
+  color: #ff4d6d;
+}
+
+.letter p {
+  font-size: 14px;
+  color: #444;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.hint {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 14px;
 }
