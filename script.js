@@ -24,10 +24,9 @@ function cacheSizes() {
 window.addEventListener("load", cacheSizes);
 window.addEventListener("resize", cacheSizes);
 
-let currentIndex = 1;                 // start at actual first image (because of duplicate)
-let carouselOffset = -slideWidth;     // show first image
+let currentIndex = 1;                
+let carouselOffset = -slideWidth;    
 
-// initialize
 slides.style.transform = `translateX(${carouselOffset}px)`;
 
 
@@ -69,7 +68,6 @@ function move(e) {
     music.play().catch(() => {});
   }
 
-  // <-- IMPORTANT: use this function for carousel movement
   moveCarousel(delta);
 }
 
@@ -143,7 +141,6 @@ function startWinding(e) {
     rotation += 5;
     lever.style.transform = `rotate(${rotation}deg)`;
 
-    // also move carousel while winding
     moveCarousel(5);
   }, 50);
 }
@@ -160,10 +157,6 @@ windButton.addEventListener('pointerup', stopWinding);
 windButton.addEventListener('pointerleave', stopWinding);
 windButton.addEventListener('pointercancel', stopWinding);
 
-
-// ===============================
-// Carousel Move Function (Infinite Loop)
-// ===============================
 function moveCarousel(delta) {
   carouselOffset -= delta * 0.3;
   slides.style.transform = `translateX(${carouselOffset}px)`;
@@ -199,7 +192,6 @@ function closeAlert() {
 
   const PASSWORD = "8813200023188";
 
-// Auto-unlock if already authenticated
 if (sessionStorage.getItem("siteUnlocked") === "true") {
   unlock();
 }
@@ -207,7 +199,6 @@ if (sessionStorage.getItem("siteUnlocked") === "true") {
 function unlockSite() {
   const input = document.getElementById("wordInput").value;
 
-  // compare as STRING to avoid number issues
   if (input === PASSWORD) {
     sessionStorage.setItem("siteUnlocked", "true");
     unlock();
@@ -220,10 +211,3 @@ function unlock() {
   document.getElementById("passwordGate").style.display = "none";
   document.getElementById("siteContent").style.display = "block";
 }
-
-//============================secondpage===============================
-const envelope = document.getElementById("envelope");
-
-envelope.addEventListener("click", () => {
-  envelope.classList.toggle("open");
-});

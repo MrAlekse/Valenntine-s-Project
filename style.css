@@ -5,10 +5,9 @@
         -webkit-user-select: none;
         touch-action: none;
       }
-
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 120vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -16,10 +15,7 @@
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
-
-
       }
-
       .music-box {
         margin-top: 140px;
         width: 280px;
@@ -32,8 +28,6 @@
         text-align: center;
         color: #fff;
       }
-
-
   .lid {
     position: absolute;
     top: -40px;
@@ -44,14 +38,9 @@
     border-radius: 10px;
     transition: transform 0.6s ease;
   }
-
   .lid.open {
     transform: translateY(-35px);
   }
-
-    
-
-        /* Lever */
   .lever-base {
     position: absolute;
     left: 50%;
@@ -63,17 +52,15 @@
     border-radius: 50%;
     z-index: 3;
   }
-
   .lever-wrapper {
     position: absolute;
     left: 49.5%;
     top: 110px;
     transform: translateX(-50%);
-    width: 80px;    /* make it clickable */
-    height: 60px;   /* make it clickable */
+    width: 80px;    
+    height: 60px;   
     z-index: 4;
   }
-
   .lever {
     position: absolute;
     left: 50%;
@@ -84,12 +71,11 @@
     border-radius: 5px;
     transform-origin: top center;
     cursor: grab;
-    transform: translateX(-50%); /* keep centered */
+    transform: translateX(-50%); 
   }
-
     .inner-image {
       position: absolute;
-      top: 40px; /* starts under the lid */
+      top: 40px;
       left: 50%;
       transform: translateX(-50%) translateY(0);
       width: 120px;
@@ -104,23 +90,17 @@
 .inner-image * {
   touch-action: manipulation;
 }
-
     .inner-image.show {
       opacity: 1;
     }
-
     .inner-image {
   cursor: default;
 }
-
 .inner-image[style*="pointer-events: auto"] {
   cursor: pointer;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
-
-
-  /* VERTICAL RIBBON */
-    .ribbon-vertical {
+   .ribbon-vertical {
       position: absolute;
       left: 50%;
       top: 0px;
@@ -129,8 +109,6 @@
       background: #ff0000;
       transform: translateX(-50%);
     }
-
-    /* HORIZONTAL RIBBON */
     .ribbon-horizontal {
       position: absolute;
       top: 50%;
@@ -140,7 +118,6 @@
       background: #ff0000;
       transform: translateY(-50%);
     }
-
 #windButton {
   margin-top: 220px;
   padding: 10px;
@@ -150,31 +127,25 @@
   background: transparent;
   cursor: pointer;
 }
-
 #windButton:hover {
   background: rgba(255, 106, 0, 0.1);
 }
-
 #windButton:active {
   transform: scale(0.95);
 }
-
 #windButton:active {
   background: rgba(255, 89, 0, 0.249);
 }
-
 .gradient-text {
   font-size: 15px;
   font-weight: bold;
-  display: inline-block; /* IMPORTANT */
+  display: inline-block;
   background: linear-gradient(45deg, #ff6a00, #ee0979);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
-
-/*Image Carousel*/
 .carousel {
   position: absolute;
   top: -240px;
@@ -186,38 +157,33 @@
   border-radius: 10px;
   z-index: 1;
 }
-
 .slides {
   display: flex;
   transition: transform 0.2s ease;
   gap: 30px;
 }
-
 .slide {
   width: 120px;
   height: 120px;
   flex-shrink: 0;
   object-fit: cover;
-  border: 5px solid #fff;          /* white frame */
+  border: 5px solid #fff;        
   border-radius: 12px;
 }
 
-/*bow*/
-/* Ribbon Bow */
 .ribbon-bow {
   position: absolute;
-  top: -30px;              /* adjusted for bigger size */
+  top: -30px;             
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;            /* ⬅ bigger */
-  height: 50px;           /* ⬅ bigger */
+  width: 90px;            
+  height: 50px;            
   z-index: 5;
 }
-
 .bow-left,
 .bow-right {
   position: absolute;
-  width: 55px;            /* ⬅ bigger loops */
+  width: 55px;           
   height: 26px;
   background: linear-gradient(
     #ff0000, #e5032c
@@ -225,39 +191,33 @@
   border-radius: 24px 24px 20px 20px;
   top: 10px;
 }
-
 .bow-left1,
 .bow-right1 {
   position: absolute;
-  width: 55px;            /* ⬅ bigger loops */
+  width: 55px;           
   height: 26px;
   background:#ff0000;
   border-radius: 24px 24px 20px 20px;
 }
-
 .bow-left {
   left: -9px;
   transform: rotate(-20deg);
 }
-
 .bow-right {  
   right: -9px;
   transform: rotate(20deg);
 }
-
 .bow-left1 {
   left: -9px;
   transform: rotate(20deg);
 }
-
 .bow-right1 {  
   right: -9px;
   transform: rotate(-20deg);
 }
-
 .bow-knot {
   position: absolute;
-  width: 22px;            /* ⬅ bigger knot */
+  width: 22px;            
   height: 22px;
   background: #b71c1c;
   border-radius: 50%;
@@ -266,28 +226,23 @@
   transform: translateX(-50%);
   z-index: 6;
 }
-
-/* Optional ribbon tails */
 .ribbon-bow::before,
 .ribbon-bow::after {
   content: "";
   position: absolute;
   width: 14px;
-  height: 50px;           /* ⬅ longer tails */
+  height: 50px;           
   background: #ff0000;
   top: 25px;
 }
-
 .ribbon-bow::before {
   left: 26px;
   transform: rotate(20deg);
 }
-
 .ribbon-bow::after {
   right: 26px;
   transform: rotate(-20deg);
 }
-
 a:has(.inner-image) {
   position: absolute;
   left: 50%;
@@ -298,12 +253,10 @@ a:has(.inner-image) {
 .status {
   animation: pulse 1.8s infinite;
 }
-
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
-
 .custom-alert {
   position: fixed;
   inset: 0;
@@ -316,17 +269,15 @@ a:has(.inner-image) {
   transition: opacity 0.3s ease;
   z-index: 9999;
 }
-
 .custom-alert.show {
   opacity: 1;
   pointer-events: auto;
 }
-
 .alert-box {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: #fff;
   margin-right: 65px;
-  margin-top: -170px;
+  margin-top: 100px;
   width: min(90vw, 320px);
   padding: 24px;
   border-radius: 18px;
@@ -338,21 +289,17 @@ a:has(.inner-image) {
   justify-content: center;
   animation: popIn 0.3s ease;
 }
-
-
 .alert-box h2 {
   margin: 0 0 10px;
   font-size: 20px;
   line-height: 1.25;
 }
-
 .alert-box p {
   font-size: 15px;
   margin-bottom: 20px;
   margin: 0 0 20px;
   line-height: 1.4;
 }
-
 .alert-box button {
   background: #fff;
   color: #ff4f7a;
@@ -363,12 +310,9 @@ a:has(.inner-image) {
   cursor: pointer;
   font-weight: bold;
 }
-
 .alert-box button:hover {
   transform: scale(1.05);
 }
-
-/* animation */
 @keyframes popIn {
   from {
     transform: scale(0.8);
@@ -379,7 +323,6 @@ a:has(.inner-image) {
     opacity: 1;
   }
 }
-
 #passwordGate {
   position: fixed;
   inset: 0;
@@ -389,7 +332,6 @@ a:has(.inner-image) {
   justify-content: center;
   z-index: 99999;
 }
-
 .gate-box {
   background: white;
   padding: 28px;
@@ -400,20 +342,17 @@ a:has(.inner-image) {
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
-
 .gate-box h2 {
   margin-bottom: 16px;
   font-size: 20PX;
   color: #ff4f7a;
 }
-
 .gate-box p {
   margin-bottom: 24px;
   font-size: 15px;
   color: #333;
   text-align: center;
 }
-
 .gate-box input {
   width: 100%;
   padding: 12px;
@@ -422,7 +361,6 @@ a:has(.inner-image) {
   border: 1px solid #ccc;
   margin-bottom: 12px;
 }
-
 .gate-box button {
   width: 100%;
   padding: 12px;
@@ -434,10 +372,8 @@ a:has(.inner-image) {
   font-weight: bold;
   cursor: pointer;
 }
-
 #errorMsg {
   color: red;
   font-size: 14px;
   margin-top: 8px;
 }
-
