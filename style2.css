@@ -29,12 +29,12 @@ body {
   color: rgb(0, 0, 0);
   padding: 10px;
   border-radius: 12px;
-  text-align: center;
   font-family: "Brush Script MT", cursive;
   border: white 4px solid;
 }
 h2{
   color: red;
+  text-align: left;
 }
 p{
   font-size: 20px;
